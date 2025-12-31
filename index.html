@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Rover: Mission Control</title>
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="brand">
+            <span class="icon">🪐</span>
+            <h2>MARS ROVER <span class="highlight">OS</span></h2>
+        </div>
+        <div class="controls">
+            <button onclick="resetGame()" class="btn secondary">
+                <span>↺</span> Reset
+            </button>
+            <button onclick="runCode()" class="btn primary">
+                <span>▶</span> Execute Mission
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="blocklyDiv" class="workspace"></div>
+
+        <div class="sidebar">
+            
+            <div class="panel game-panel">
+                <div id="gameGrid"></div>
+            </div>
+
+            <div class="panel log-panel">
+                <div class="panel-header">Mission Log</div>
+                <div id="consoleOutput">Waiting for commands...</div>
+            </div>
+
+            <div class="panel code-panel">
+                <div class="panel-header">Generated JavaScript</div>
+                <pre id="jsCode">// Code will appear here...</pre>
+            </div>
+        </div>
+    </div>
+
+    <xml id="toolbox" style="display: none">
+        <category name="Rover Actions" colour="#e74c3c">
+            <block type="move_forward"></block>
+            <block type="turn_right"></block>
+            <block type="turn_left"></block>
+            <block type="turn_around"></block>
+        </category>
+        <category name="Sensors" colour="#f1c40f">
+            <block type="is_path_clear"></block>
+            <block type="check_for_sample"></block>
+        </category>
+        <category name="Logic" colour="#3498db">
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <shadow type="math_number">
+                        <field name="NUM">4</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="controls_if"></block>
+            <block type="logic_negate"></block>
+        </category>
+    </xml>
+
+    <script src="main.js"></script>
+</body>
+</html>
